@@ -9,14 +9,23 @@ public class User {
 	private String name;
 	private int loginAttempts;
 	
+	//no args constructor
+	public User() {
+		
+	}
+	
+	//4 args constructor
 	public User(String username, String password, String name, int loginAttempts) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.loginAttempts = loginAttempts;
+	
 	}
 	//
+	
+	
 
 	// getters and setters for the above instance variables
 	public String getUsername() {
