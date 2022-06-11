@@ -8,26 +8,19 @@ import java.io.IOException;
 public class FileService {
 	public static User[] lorenzoArray() throws IOException {
 		User[] users = new User[4];
-		System.out.println("Start!");
-		BufferedReader lorenzoReader = null;
+		//System.out.println("Start!");
+		
+		BufferedReader myReader = null;
 		try {
-			lorenzoReader = new BufferedReader(new FileReader("data.txt"));
+			myReader = new BufferedReader(new FileReader("data.txt"));
 
 			int i = 0;
 			String line = "";
-			while ((line = lorenzoReader.readLine()) != null) {
+			while ((line = myReader.readLine()) != null) {
 				//System.out.println(line);
 				String[] data = line.split(",");
-				//System.out.println(data[0]);
-				//System.out.println(data[1]);
-				//System.out.println(data[2]);
+			
 	
-				
-//				for (String a : data) {
-//					System.out.println(a);
-//				}
-					
-				
 				User user = new User();
 				user.setUsername(data[0]);
 				user.setPassword(data[1]);
@@ -48,14 +41,14 @@ public class FileService {
 			e.printStackTrace();
 		} finally {
 			try {
-				lorenzoReader.close();
-				System.out.println("Closing file reader");
+				myReader.close();
+				//System.out.println("Closing file reader");
 			} catch (IOException e) {
 				e.printStackTrace();
 				System.out.println("Stack Trace exception Print");
 			}
 		}
-		System.out.println("Return Array");
+		//System.out.println("Return Array");
 		return users;
 	}
 }

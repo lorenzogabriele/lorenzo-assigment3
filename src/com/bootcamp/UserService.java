@@ -5,37 +5,51 @@ import java.util.Scanner;
 
 //this class validate the user
 public class UserService {
-	void UserServiceMethod(User[] users) throws IOException {		
+	User[] UserServiceMethod(User[] users) throws IOException {
 
 		Scanner scanner = new Scanner(System.in);
 
-		String user, pass;
-
-		User[] allUsers = FileService.lorenzoArray();
-		// System.out.println(User.getUsername()); //test print
+		String userInput = null, passInput = null;
+		boolean found = false;
+		int loginAttempts = 3;
 
 		int i = 0;
 		while (i < 4) {
 
+			User user = users[i];
+			// System.out.println("hey dude come on " +user);
+
 			System.out.println("Enter your email: ");
-			user = scanner.nextLine();
+			userInput = scanner.nextLine();
 
 			System.out.println("Enter your password: ");
-			pass = scanner.nextLine();
+			passInput = scanner.nextLine();
 
-			// loop bring every of allUsers
+			// loop check current_user in the array of all the Users
 
-			if (user.trim().equals(User.getUsername()) || (pass.trim().equals(User.getPassword()))) {
-				System.out.println("Welcome: " + User.getName());
-				break;
-			} else {
-				System.out.println("Invalid login, please try again");
+			for (User current_user : users) {
+				if (userInput.equalsIgnoreCase(current_user.getUsername())
+						&& (passInput.equals(current_user.getPassword()))) {
+					System.out.println("Welcome: " + current_user.getName());
+					found = true;
+					return users; // break
+				} else {
+					found = false;
+				}
 			}
-			i++;
 
+
+			if (loginAttempts != 0) {
+				System.out.println("Invalid login, please try again.");
+				loginAttempts--;
+			} else {
+				System.out.println("Too many failed login attempts, you are now locked out.");
+			}
+
+			i++;
 		}
 
-		System.out.println("Too many failed login attempts, you are now locked out.");
 		scanner.close();
+		return users; // return the User
 	}
 }
