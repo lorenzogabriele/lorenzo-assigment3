@@ -8,15 +8,15 @@ public class Assigment3App {
 		
 		// TODO Auto-generated method stub
 		
+		//call the fileservice with myArray method once
 		FileService fileservice = new FileService();
-		User[] allUsers = fileservice.lorenzoArray();
+		User[] allUsers = fileservice.myArray();
 		
+		
+		//pass the allUsers data to the userservice method
 		UserService userservice = new UserService();
 		userservice.UserServiceMethod(allUsers);
-		
-		
-		
-		
+
 	}
 
 }

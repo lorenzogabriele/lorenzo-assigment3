@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class FileService {
-	public static User[] lorenzoArray() throws IOException {
+	public static User[] myArray() throws IOException {
 		User[] users = new User[4];
 		//System.out.println("Start!");
 		
